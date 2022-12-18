@@ -12,4 +12,9 @@ class Pref {
 
     return _pref.getString("user_id");
   }
+
+  static Future removeId()async{
+   SharedPreferences _pref = await SharedPreferences.getInstance();
+   _pref.clear();
+  }
 }
