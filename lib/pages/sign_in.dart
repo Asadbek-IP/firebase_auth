@@ -1,3 +1,5 @@
+
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/pages/sign_up.dart';
@@ -25,16 +27,16 @@ class _SignInState extends State<SignIn> {
     String? email = emailController.text.trim();
     String? parol = parolController.text.trim();
 
-    if (email.isEmpty || parol.isEmpty) {
+    if (email==null || parol==null) {
       return;
     }
 
     AuthService.signIn(email, parol).then((user) {
-      getUserId(user);
+      saveUserId(user);
     });
   }
 
-  getUserId(User? user) async {
+  saveUserId(User? user) async {
     setState(() {
       isLoading = false;
     });

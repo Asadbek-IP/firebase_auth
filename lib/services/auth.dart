@@ -8,8 +8,8 @@ class AuthService {
   static Future<User?> signIn(String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
-      final User _user = _auth.currentUser!;
-      return _user;
+      final User user = _auth.currentUser!;
+      return user;
     } catch (error) {
       print(error);
     }
@@ -18,13 +18,14 @@ class AuthService {
 
   static Future<User?> signUp(String email, String password) async {
     try {
-      UserCredential _signUpResult = await _auth.createUserWithEmailAndPassword(
+      UserCredential signUpResult = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
 
-      return _signUpResult.user;
+      return signUpResult.user;
     } catch (error) {
       print(error);
     }
+    return null;
   }
 
   static Future logout() async {
